@@ -19,7 +19,7 @@ subnets = [
   },
   {
     name="app-subnet",
-    address_prefixes=["]10.1.1.0/24"],
+    address_prefixes=["10.1.1.0/24"],
     service_endpoints=["Microsoft.KeyVault"],
     delegation_name="",
     delegation_action="",
