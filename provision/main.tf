@@ -3,7 +3,7 @@ terraform {
     resource_group_name   = "terraform-rg"
     storage_account_name  = "kacpergajewskiterraform"
     container_name        = "prod"
-    key                   = "prod.network.tfstate"
+    key                   = "prod.main.tfstate"
   }
 }
 
@@ -23,8 +23,9 @@ module "network" {
   depends_on  = [azurerm_resource_group.network]
   
   subscription_id = var.subscription_id
+  location        = var.location
   name            = var.network_name
-  resource_group  = var.network_resource_group
+  resource_group  = azurerm_resource_group.network.name
   address_space   = var.address_space
   subnets         = var.subnets
 }
