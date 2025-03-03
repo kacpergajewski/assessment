@@ -1,4 +1,4 @@
-name: Main
+name: Apply
 
 permissions:
   id-token: write
@@ -6,8 +6,6 @@ permissions:
 
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
