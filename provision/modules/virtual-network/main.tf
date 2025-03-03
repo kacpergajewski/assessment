@@ -41,9 +41,19 @@ resource "azurerm_subnet" "default" {
     for subnet in var.subnets: subnet.name => subnet
   }
 
-  name                 = each.value.name
-  resource_group_name  = var.resource_group
-  virtual_network_name = azurerm_virtual_network.default.name
-  address_prefixes     = each.value.address_prefixes
+  name                  = each.value.name
+  resource_group_name   = var.resource_group
+  virtual_network_name  = azurerm_virtual_network.default.name
+  address_prefixes      = each.value.address_prefixes
+  dynamic delegation {
+    for_each = (length(each.value.delegation_name) > 0 && length(each.value.delegation_action) > 0) ? {""=""} : {}
+    content {
+      name = "${each.value.subnet_name}-delegation"
+      service_delegation {
+        name    = each.value.delegation_name
+        actions = each.value.delegation_action
+      }
+    }
+  }
 }
 
