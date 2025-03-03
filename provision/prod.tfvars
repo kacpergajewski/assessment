@@ -11,7 +11,7 @@ address_space = ["10.1.0.0/16"]
 subnets = [
   {
     subnet_name="postgres-subnet",
-    address_prefix="10.1.9.0/24",
+    address_prefix="10.1.0.0/24",
     service_endpoints=["Microsoft.Storage"],
     delegation_name="Microsoft.DBforPostgreSQL/flexibleServers",
     delegation_action="Microsoft.Network/virtualNetworks/subnets/join/action",
@@ -19,7 +19,7 @@ subnets = [
   },
   {
     subnet_name="app-subnet",
-    address_prefix="10.1.0.0/24",
+    address_prefix="10.1.1.0/24",
     service_endpoints=["Microsoft.KeyVault"],
     delegation_name="",
     delegation_action="",
