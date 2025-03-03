@@ -34,7 +34,7 @@ variable "address_space" {
 
 variable "subnets" {
   type = list(object({
-    subnet_name = string
+    name = string
     address_prefix = string
     service_endpoints = list(string)
     delegation_name = string
