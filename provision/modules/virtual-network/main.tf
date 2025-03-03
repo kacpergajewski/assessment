@@ -51,7 +51,7 @@ resource "azurerm_subnet" "default" {
       name = "${each.value.name}-delegation"
       service_delegation {
         name    = each.value.delegation_name
-        actions = split(",", each.value.delegation_action
+        actions = split(",", each.value.delegation_action)
       }
     }
   }
