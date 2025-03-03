@@ -41,7 +41,7 @@ resource "azurerm_subnet" "default" {
     for subnet in var.subnets: subnet.name => subnet
   }
 
-  name                 = subnet.name
+  name                 = each.value.name
   resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.default.name
   address_prefixes     = each.value.address_prefix
