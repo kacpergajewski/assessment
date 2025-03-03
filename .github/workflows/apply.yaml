@@ -45,5 +45,5 @@ jobs:
     - name: Run terraform apply
       run: |
         cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
-        terraform apply --auto-approve -var-file="prod.tfvars"
+        terraform apply --auto-approve
   

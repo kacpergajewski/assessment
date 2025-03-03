@@ -44,5 +44,5 @@ jobs:
     - name: Run terraform plan
       run: |
         cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
-        terraform plan -var-file="prod.tfvars"
+        terraform plan
   
