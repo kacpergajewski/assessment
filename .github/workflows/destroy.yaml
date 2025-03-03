@@ -6,6 +6,17 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        description: 'Environment'
+        default: 'prod'
+        type: choice
+        options:
+          - management
+          - dev
+          - stage
+          - prod
 
 jobs:
   destroy:
@@ -28,10 +39,10 @@ jobs:
 
     - name: Initialize Terraform
       run: |
-        cd $GITHUB_WORKSPACE/provision
+        cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
         terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
-    - name: Run terraform apply
+    - name: Run terraform destroy
       run: |
-        cd $GITHUB_WORKSPACE/provision
+        cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
         terraform destroy --auto-approve -var-file="prod.tfvars"
   

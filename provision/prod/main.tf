@@ -1,12 +1,3 @@
-terraform {
-  backend "azurerm" {
-    resource_group_name   = "terraform-rg"
-    storage_account_name  = "kacpergajewskiterraform"
-    container_name        = var.environment
-    key                   = "${var.environment}.main.tfstate"
-  }
-}
-
 provider "azurerm" {
   use_oidc        = true
   subscription_id = var.subscription_id

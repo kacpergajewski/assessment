@@ -1,4 +1,3 @@
-environment     = "prod"
 subscription_id = "1aa888f7-e4dd-4ec6-b10e-77d1fa39dc52"
 location        = "Poland Central"
 resource_tags = {
