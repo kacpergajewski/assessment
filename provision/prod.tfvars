@@ -5,7 +5,7 @@ resource_tags = {
   "environment" = "prod"
 }
 
-vnet_name = "prod"
+network_name = "prod"
 network_resource_group = "network-rg"
 address_space = ["10.1.0.0/16"]
 subnets = [
