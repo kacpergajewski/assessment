@@ -48,10 +48,10 @@ resource "azurerm_subnet" "default" {
   dynamic delegation {
     for_each = (length(each.value.delegation_name) > 0 && length(each.value.delegation_action) > 0) ? {""=""} : {}
     content {
-      name = "${each.value.subnet_name}-delegation"
+      name = "${each.value.name}-delegation"
       service_delegation {
         name    = each.value.delegation_name
-        actions = each.value.delegation_action
+        actions = split(",", each.value.delegation_action
       }
     }
   }
