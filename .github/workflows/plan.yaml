@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  provision:
+  plan:
     runs-on: ubuntu-latest
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
@@ -33,5 +33,5 @@ jobs:
     - name: Run terraform apply
       run: |
         cd $GITHUB_WORKSPACE/provision
-        terraform apply --auto-approve -var-file="prod.tfvars"
+        terraform plan -var-file="prod.tfvars"
   
