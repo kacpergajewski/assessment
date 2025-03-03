@@ -5,12 +5,12 @@ resource_tags = {
   "environment" = "prod"
 }
 
-network_name = "prod"
-network_resource_group = "network-rg"
-address_space = ["10.1.0.0/16"]
+network_name            = "prod"
+network_resource_group  = "network-rg"
+address_space           = ["10.1.0.0/16"]
 subnets = [
   {
-    subnet_name="postgres-subnet",
+    name="postgres-subnet",
     address_prefix="10.1.0.0/24",
     service_endpoints=["Microsoft.Storage"],
     delegation_name="Microsoft.DBforPostgreSQL/flexibleServers",
@@ -18,7 +18,7 @@ subnets = [
     private_endpoint_network_policies="Enabled"
   },
   {
-    subnet_name="app-subnet",
+    name="app-subnet",
     address_prefix="10.1.1.0/24",
     service_endpoints=["Microsoft.KeyVault"],
     delegation_name="",
