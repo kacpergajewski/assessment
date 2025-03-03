@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "network" {
 }
 
 module "network" {
-  source      = "modules/virtual-network"
+  source      = "./modules/virtual-network"
   depends_on  = [azurerm_resource_group.network]
   
   subscription_id = var.subscription_id
