@@ -17,7 +17,7 @@ variable "resource_tags" {
 
 
 
-variable "vnet_name" {
+variable "network_name" {
   type        = string
   description = "(Required) The name of the virtual network. Changing this forces a new resource to be created."
 }
