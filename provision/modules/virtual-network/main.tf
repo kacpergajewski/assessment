@@ -12,12 +12,14 @@ data "azurerm_subscription" "current" {
 }
 
 resource "azurerm_network_security_group" "default" {
-  name                = var.name
+  name                = "${var.name}-nsg"
   location            = var.location
   resource_group_name = var.resource_group
 }
 
 resource "azurerm_virtual_network" "default" {
+  depends_on = [ azurerm_network_security_group.default ]
+
   name                = var.name
   location            = var.location
   resource_group_name = var.resource_group
@@ -34,6 +36,7 @@ resource "azurerm_virtual_network" "default" {
 }
 
 resource "azurerm_subnet" "default" {
+  depends_on = [ azurerm_virtual_network.default ]
   for_each = {
     for subnet in var.subnets: subnet.name => subnet
   }
