@@ -1,3 +1,3 @@
-output "network_id" {
+output "id" {
   value = module.network.id
 }

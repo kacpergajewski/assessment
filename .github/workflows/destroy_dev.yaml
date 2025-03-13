@@ -1,4 +1,4 @@
-name: Destroy
+name: Destroy dev
 
 permissions:
   id-token: write
@@ -6,17 +6,6 @@ permissions:
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        required: true
-        description: 'Environment'
-        default: 'prod'
-        type: choice
-        options:
-          - management
-          - dev
-          - stage
-          - prod
 
 jobs:
   destroy:
@@ -37,12 +26,19 @@ jobs:
       with:
         terraform_version: 1.5.7
 
-    - name: Initialize Terraform
+    - name: Initialize terraform network
       run: |
-        cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
+        cd $GITHUB_WORKSPACE/terraform/callouts/dev/051-network
         terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
-    - name: Run terraform destroy
+    - name: Provision network
       run: |
-        cd $GITHUB_WORKSPACE/provision/${{ inputs.environment }}
+        cd $GITHUB_WORKSPACE/terraform/callouts/dev/051-network
         terraform destroy --auto-approve
-  
+    - name: Initialize terraform database
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/callouts/dev/101-database
+        terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
+    - name: Provision database
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/callouts/dev/101-database
+        terraform destroy --auto-approve -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
