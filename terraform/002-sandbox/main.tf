@@ -11,7 +11,6 @@ resource "azurerm_resource_group" "network" {
 
 module "network" {
   source      = "../modules/network"
-  depends_on  = [azurerm_resource_group.network]
   
   subscription_id = var.subscription_id
   location        = var.location
@@ -21,6 +20,7 @@ module "network" {
   subnets         = var.subnets
 }
 
+
 resource "azurerm_resource_group" "database" {
   name     = var.database_resource_group
   location = var.location
@@ -28,7 +28,6 @@ resource "azurerm_resource_group" "database" {
 
 module "database" {
   source      = "../modules/database"
-  depends_on  = [azurerm_resource_group.database]
 
   subscription_id         = var.subscription_id
   network_name            = var.network_name
@@ -37,7 +36,7 @@ module "database" {
   private_dns_zone_name   = var.private_dns_zone_name
 
   name                    = var.database_server_name
-  resource_group          = var.database_resource_group
+  resource_group          = azurerm_resource_group.database.name
   location                = var.location
   postgresql_version      = var.postgresql_version
   administrator_login     = var.administrator_login

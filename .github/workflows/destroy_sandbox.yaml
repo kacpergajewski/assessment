@@ -28,9 +28,9 @@ jobs:
 
     - name: Initialize terraform database
       run: |
-        cd $GITHUB_WORKSPACE/terraform/2-sandbox
+        cd $GITHUB_WORKSPACE/terraform/002-sandbox
         terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
     - name: Provision database
       run: |
-        cd $GITHUB_WORKSPACE/terraform/2-sandbox
+        cd $GITHUB_WORKSPACE/terraform/002-sandbox
         terraform destroy --auto-approve -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
