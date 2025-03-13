@@ -1,4 +1,4 @@
-name: Provision on prod
+name: Provision prod
 
 permissions:
   id-token: write

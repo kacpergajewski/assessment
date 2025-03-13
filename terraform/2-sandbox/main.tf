@@ -4,13 +4,30 @@ provider "azurerm" {
   features {}
 }
 
+resource "azurerm_resource_group" "network" {
+  name     = var.network_resource_group
+  location = var.location
+}
+
+module "network" {
+  source      = "../modules/network"
+  depends_on  = [azurerm_resource_group.network]
+  
+  subscription_id = var.subscription_id
+  location        = var.location
+  name            = var.network_name
+  resource_group  = azurerm_resource_group.network.name
+  address_space   = var.address_space
+  subnets         = var.subnets
+}
+
 resource "azurerm_resource_group" "database" {
-  name     = var.resource_group
+  name     = var.database_resource_group
   location = var.location
 }
 
 module "database" {
-  source      = "../../../modules/database"
+  source      = "../modules/database"
   depends_on  = [azurerm_resource_group.database]
 
   subscription_id         = var.subscription_id
@@ -20,7 +37,7 @@ module "database" {
   private_dns_zone_name   = var.private_dns_zone_name
 
   name                    = var.database_server_name
-  resource_group          = var.resource_group
+  resource_group          = var.database_resource_group
   location                = var.location
   postgresql_version      = var.postgresql_version
   administrator_login     = var.administrator_login

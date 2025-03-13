@@ -19,13 +19,32 @@ variable "resource_tags" {
 
 variable "network_name" {
   type        = string
-  description = "Specifies the name of the Virtual Network."
+  description = "(Required) The name of the virtual network. Changing this forces a new resource to be created."
 }
 
 variable "network_resource_group" {
   type        = string
-  description = "Specifies the name of the resource group the Virtual Network is located in."
+  description = "(Required) The name of the resource group in which to create the virtual network. Changing this forces a new resource to be created."
 }
+
+variable "address_space" {
+  type        = list(string)
+  description = "(Required) The address space that is used the virtual network. You can supply more than one address space."
+}
+
+variable "subnets" {
+  type = list(object({
+    name              = string
+    address_prefixes  = list(string)
+    service_endpoints = list(string)
+    delegation_name   = string
+    delegation_action = string
+  }))
+  default = []
+  description = "List of subnet name and address prefix"
+}
+
+
 
 variable "database_subnet_name" {
   type        = string
@@ -38,13 +57,12 @@ variable "private_dns_zone_name" {
 }
 
 
-
 variable "database_server_name" {
   type        = string
   description = "(Required) The name which should be used for this PostgreSQL Flexible Server. Changing this forces a new PostgreSQL Flexible Server to be created."
 }
 
-variable "resource_group" {
+variable "database_resource_group" {
   type        = string
   description = "(Required) The name of the Resource Group where the PostgreSQL Flexible Server should exist. Changing this forces a new PostgreSQL Flexible Server to be created."
 }
