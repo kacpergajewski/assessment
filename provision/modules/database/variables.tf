@@ -60,7 +60,7 @@ variable "storage_mb" {
 
 variable "postgresql_version" {
   type        = string
-  description = "(Optional) The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13, 14, 15 and 16. Required when create_mode is Default."
+  description = "(Optional) The version of PostgreSQL Flexible Server to use. Possible values are 11, 12, 13, 14, 15 and 16. Required when create_mode is Default."
 }
 
 variable "zone" {

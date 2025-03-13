@@ -53,5 +53,5 @@ jobs:
     - name: Run terraform apply
       run: |
         cd $GITHUB_WORKSPACE/provision/prod/101-database
-        terraform apply --auto-approve -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
+        terraform apply --auto-approve
   
