@@ -41,12 +41,7 @@ jobs:
       run: terraform validate
     - name: terraform plan
       id: plan
-      if: github.event_name == 'pull_request'
-      run: terraform plan -no-color -input=false
-      continue-on-error: true
-    - name: terraform plan status
-      if: steps.plan.outcome == 'failure'
-      run: exit 1
+      run: terraform plan -no-color -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
 
     - name: terraform apply
       run: |
