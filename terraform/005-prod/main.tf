@@ -30,8 +30,8 @@ module "database" {
   source      = "../modules/database"
 
   subscription_id         = var.subscription_id
-  network_name            = var.network_name
-  network_resource_group  = var.network_resource_group
+  network_name            = module.network.name
+  network_resource_group  = azurerm_resource_group.network.name
   database_subnet_name    = var.database_subnet_name
   private_dns_zone_name   = var.private_dns_zone_name
 
@@ -39,12 +39,12 @@ module "database" {
   resource_group          = azurerm_resource_group.database.name
   location                = var.location
   postgresql_version      = var.postgresql_version
-  administrator_login     = var.administrator_login
-  administrator_password  = var.administrator_password
   zone                    = var.zone
   storage_mb              = var.storage_mb
   sku_name                = var.sku_name
   create_mode             = var.create_mode
+  administrator_login     = var.administrator_login
+  administrator_password  = var.administrator_password
 
   database_config         = var.database_config
 }
