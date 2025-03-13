@@ -5,28 +5,28 @@ resource_tags = {
   "environment" = "sandbox"
 }
 
-network_name            = "sandbox-network"
-network_resource_group  = "sandbox-network-rg"
-address_space           = ["10.2.0.0/16"]
+network_name           = "sandbox-network"
+network_resource_group = "sandbox-network-rg"
+address_space          = ["10.2.0.0/16"]
 subnets = [
   {
-    name              ="database-subnet",
-    address_prefixes  =["10.2.0.0/24"],
-    service_endpoints =["Microsoft.Storage"],
-    delegation_name   ="Microsoft.DBforPostgreSQL/flexibleServers",
-    delegation_action ="Microsoft.Network/virtualNetworks/subnets/join/action",
+    name              = "database-subnet",
+    address_prefixes  = ["10.2.0.0/24"],
+    service_endpoints = ["Microsoft.Storage"],
+    delegation_name   = "Microsoft.DBforPostgreSQL/flexibleServers",
+    delegation_action = "Microsoft.Network/virtualNetworks/subnets/join/action",
   },
   {
-    name              ="app-subnet",
-    address_prefixes  =["10.2.1.0/24"],
-    service_endpoints =[],
-    delegation_name   ="",
-    delegation_action ="Microsoft.Network/virtualNetworks/subnets/join/action",
+    name              = "app-subnet",
+    address_prefixes  = ["10.2.1.0/24"],
+    service_endpoints = [],
+    delegation_name   = "",
+    delegation_action = "Microsoft.Network/virtualNetworks/subnets/join/action",
   }
 ]
 
-database_subnet_name    = "database-subnet"
-private_dns_zone_name   = "sandbox.postgres.database.azure.com"
+database_subnet_name  = "database-subnet"
+private_dns_zone_name = "sandbox.postgres.database.azure.com"
 
 database_server_name    = "sandbox-kacpergajewski"
 database_resource_group = "sandbox-database-rg"

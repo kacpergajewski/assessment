@@ -40,7 +40,7 @@ variable "subnets" {
     delegation_name   = string
     delegation_action = string
   }))
-  default = []
+  default     = []
   description = "List of subnet name and address prefix"
 }
 

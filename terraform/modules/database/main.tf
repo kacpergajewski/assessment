@@ -17,9 +17,9 @@ data "azurerm_virtual_network" "default" {
 }
 
 data "azurerm_subnet" "database" {
-  name                  = var.database_subnet_name
-  resource_group_name   = var.network_resource_group
-  virtual_network_name  = var.network_name
+  name                 = var.database_subnet_name
+  resource_group_name  = var.network_resource_group
+  virtual_network_name = var.network_name
 }
 
 resource "azurerm_private_dns_zone" "database" {
