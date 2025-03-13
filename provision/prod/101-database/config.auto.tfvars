@@ -13,7 +13,7 @@ private_dns_zone_name   = "prod.kacpergajewski.postgres.database.azure.com"
 database_server_name    = "prod"
 sku_name                = "B_Standard_B1ms"
 storage_mb              = 32768
-version                 = "12"
+postgresql_version      = "12"
 zone                    = "2"
 create_mode             = "Default"
 
