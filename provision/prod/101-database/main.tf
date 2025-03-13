@@ -10,16 +10,16 @@ resource "azurerm_resource_group" "database" {
 }
 
 module "database" {
-  source      = "../modules/database"
+  source      = "../../modules/database"
   depends_on  = [azurerm_resource_group.database]
 
   subscription_id         = var.subscription_id
   network_name            = var.network_name
   network_resource_group  = var.network_resource_group
-  subnet_name             = var.database_subnet_name
+  database_subnet_name    = var.database_subnet_name
   private_dns_zone_name   = var.private_dns_zone_name
 
-  name                    = var.database_name
+  name                    = var.database_server_name
   resource_group          = azurerm_resource_group.database
   location                = var.location
   version                 = var.version
@@ -28,6 +28,7 @@ module "database" {
   zone                    = var.zone
   storage_mb              = var.storage_mb
   sku_name                = var.sku_name
+  create_mode             = var.create_mode
 
   database_config         = var.database_config
 }

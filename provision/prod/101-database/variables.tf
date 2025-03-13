@@ -39,7 +39,7 @@ variable "private_dns_zone_name" {
 
 
 
-variable "name" {
+variable "database_server_name" {
   type        = string
   description = "(Required) The name which should be used for this PostgreSQL Flexible Server. Changing this forces a new PostgreSQL Flexible Server to be created."
 }
