@@ -6,7 +6,7 @@ variable "subscription_id" {
 variable "location" {
   type        = string
   default     = "Poland Central"
-  description = "Location for the resources.Changing this forces a new resource to be created"
+  description = "Location for the resources. Changing this forces a new resource to be created"
 }
 
 variable "resource_tags" {
