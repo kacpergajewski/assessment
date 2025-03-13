@@ -1,4 +1,8 @@
-output "id" {
+output "network_id" {
+  value = module.network.id
+}
+
+output "database_id" {
   value = module.database.id
 }
 

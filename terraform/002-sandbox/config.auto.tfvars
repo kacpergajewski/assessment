@@ -38,7 +38,7 @@ create_mode             = "Default"
 
 database_config = [
   {
-    name      = "sandbox"
+    name      = "app"
     charset   = "UTF8"
     collation = "en_US.utf8"
   }
