@@ -20,7 +20,7 @@ module "database" {
   private_dns_zone_name   = var.private_dns_zone_name
 
   name                    = var.database_server_name
-  resource_group          = azurerm_resource_group.database
+  resource_group          = var.resource_group
   location                = var.location
   postgresql_version      = var.postgresql_version
   administrator_login     = var.administrator_login
