@@ -15,7 +15,7 @@ resource_group          = "database-rg"
 sku_name                = "B_Standard_B1ms"
 storage_mb              = 32768
 postgresql_version      = "12"
-zone                    = "2"
+zone                    = "1"
 create_mode             = "Default"
 
 database_config = [
