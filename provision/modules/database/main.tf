@@ -28,6 +28,8 @@ resource "azurerm_private_dns_zone" "database" {
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "database" {
+  depends_on = [azurerm_private_dns_zone.database]
+
   name                  = "${var.private_dns_zone_name}-link"
   private_dns_zone_name = var.private_dns_zone_name
   virtual_network_id    = data.azurerm_virtual_network.default.id
