@@ -11,6 +11,7 @@ database_subnet_name    = "database-subnet"
 private_dns_zone_name   = "prod.kacpergajewski.postgres.database.azure.com"
 
 database_server_name    = "prod"
+resource_group          = "database-rg"
 sku_name                = "B_Standard_B1ms"
 storage_mb              = 32768
 postgresql_version      = "12"
