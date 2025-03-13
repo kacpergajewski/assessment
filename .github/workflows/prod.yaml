@@ -1,4 +1,4 @@
-name: Main
+name: Provision on prod
 
 permissions:
   id-token: write
@@ -10,7 +10,7 @@ on:
     - main
 
 jobs:
-  terraform:
+  provision:
     runs-on: ubuntu-latest
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}

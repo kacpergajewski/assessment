@@ -1,0 +1,47 @@
+name: Provision on dev
+
+permissions:
+  id-token: write
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+    - main
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.ARM_CLIENT_ID }}
+        tenant-id: ${{ secrets.ARM_TENANT_ID }}
+        subscription-id: ${{ vars.PROD_SUBSCRIPTION_ID }}
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: 1.5.7
+
+    - name: Initialize terraform network
+      run: |
+        cd $GITHUB_WORKSPACE/provision/dev/051-network
+        terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
+    - name: Provision network
+      run: |
+        cd $GITHUB_WORKSPACE/provision/dev/051-network
+        terraform apply --auto-approve
+    - name: Initialize terraform database
+      run: |
+        cd $GITHUB_WORKSPACE/provision/dev/101-database
+        terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
+    - name: Provision database
+      run: |
+        cd $GITHUB_WORKSPACE/provision/dev/101-database
+        terraform apply --auto-approve -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
