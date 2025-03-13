@@ -6,7 +6,7 @@ resource_tags = {
 }
 
 network_name            = "prod-network"
-network_resource_group  = "network-rg"
+network_resource_group  = "prod-network-rg"
 database_subnet_name    = "database-subnet"
 private_dns_zone_name   = "prod.postgres.database.azure.com"
 

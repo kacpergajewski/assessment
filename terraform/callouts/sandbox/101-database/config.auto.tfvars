@@ -6,7 +6,7 @@ resource_tags = {
 }
 
 network_name            = "sandbox-network"
-network_resource_group  = "network-rg"
+network_resource_group  = "sandbox-network-rg"
 database_subnet_name    = "database-subnet"
 private_dns_zone_name   = "sandbox.postgres.database.azure.com"
 

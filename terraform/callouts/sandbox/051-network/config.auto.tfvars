@@ -6,7 +6,7 @@ resource_tags = {
 }
 
 network_name            = "sandbox-network"
-network_resource_group  = "network-rg"
+network_resource_group  = "sandbox-network-rg"
 address_space           = ["10.2.0.0/16"]
 subnets = [
   {

@@ -6,7 +6,7 @@ resource_tags = {
 }
 
 network_name            = "prod-network"
-network_resource_group  = "network-rg"
+network_resource_group  = "prod-network-rg"
 address_space           = ["10.5.0.0/16"]
 subnets = [
   {
