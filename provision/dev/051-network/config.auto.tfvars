@@ -20,7 +20,7 @@ subnets = [
     name              ="app-subnet",
     address_prefixes  =["10.3.1.0/24"],
     service_endpoints =[],
-    delegation_nam    ="",
+    delegation_name   ="",
     delegation_action ="Microsoft.Network/virtualNetworks/subnets/join/action",
   }
 ]
