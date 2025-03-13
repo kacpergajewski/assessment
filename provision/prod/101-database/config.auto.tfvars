@@ -8,14 +8,14 @@ resource_tags = {
 network_name            = "prod-network"
 network_resource_group  = "network-rg"
 database_subnet_name    = "database-subnet"
-private_dns_zone_name   = "prod.kacpergajewski.postgres.database.azure.com"
+private_dns_zone_name   = "prod.postgres.database.azure.com"
 
-database_server_name    = "prod"
+database_server_name    = "prod-kacpergajewski"
 resource_group          = "database-rg"
 sku_name                = "B_Standard_B1ms"
 storage_mb              = 32768
 postgresql_version      = "12"
-zone                    = "1"
+zone                    = "2"
 create_mode             = "Default"
 
 database_config = [
