@@ -1,4 +1,4 @@
-name: Plan
+name: terraform plan
 
 permissions:
   id-token: write

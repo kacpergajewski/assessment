@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-data "azurerm_subscription" "current" {
+data "azurerm_subscription" "default" {
   subscription_id = var.subscription_id
 }
 

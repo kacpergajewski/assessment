@@ -1,4 +1,4 @@
-name: Destroy
+name: terraform destroy
 
 permissions:
   id-token: write

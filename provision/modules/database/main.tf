@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-data "azurerm_subscription" "current" {
+data "azurerm_subscription" "default" {
   subscription_id = var.subscription_id
 }
 
@@ -16,7 +16,7 @@ data "azurerm_virtual_network" "default" {
   resource_group_name = var.network_resource_group
 }
 
-data "azurerm_subnet" "name" {
+data "azurerm_subnet" "database" {
   name                  = var.database_subnet_name
   resource_group_name   = var.network_resource_group
   virtual_network_name  = var.network_name

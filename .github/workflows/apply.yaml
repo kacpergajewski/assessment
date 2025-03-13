@@ -1,4 +1,4 @@
-name: Apply
+name: terraform apply
 
 permissions:
   id-token: write
