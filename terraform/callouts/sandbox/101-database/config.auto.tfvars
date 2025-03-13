@@ -2,15 +2,15 @@ subscription_id = "1aa888f7-e4dd-4ec6-b10e-77d1fa39dc52"
 location        = "Poland Central"
 resource_tags = {
   "deployment"  = "terraform"
-  "environment" = "dev"
+  "environment" = "sandbox"
 }
 
-network_name            = "dev-network"
+network_name            = "sandbox-network"
 network_resource_group  = "network-rg"
 database_subnet_name    = "database-subnet"
-private_dns_zone_name   = "dev.postgres.database.azure.com"
+private_dns_zone_name   = "sandbox.postgres.database.azure.com"
 
-database_server_name    = "dev-kacpergajewski"
+database_server_name    = "sandbox-kacpergajewski"
 resource_group          = "database-rg"
 sku_name                = "B_Standard_B1ms"
 storage_mb              = 32768
@@ -20,7 +20,7 @@ create_mode             = "Default"
 
 database_config = [
   {
-    name      = "dev"
+    name      = "sandbox"
     charset   = "UTF8"
     collation = "en_US.utf8"
   }

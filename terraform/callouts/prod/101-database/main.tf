@@ -10,7 +10,7 @@ resource "azurerm_resource_group" "database" {
 }
 
 module "database" {
-  source      = "../../modules/database"
+  source      = "../../../modules/database"
   depends_on  = [azurerm_resource_group.database]
 
   subscription_id         = var.subscription_id
