@@ -58,7 +58,7 @@ variable "storage_mb" {
   description = "(Optional) The max storage allowed for the PostgreSQL Flexible Server. Possible values are 32768, 65536, 131072, 262144, 524288, 1048576, 2097152, 4193280, 4194304, 8388608, 16777216 and 33553408."
 }
 
-variable "version" {
+variable "postgresql_version" {
   type        = string
   description = "(Optional) The version of PostgreSQL Flexible Server to use. Possible values are 11,12, 13, 14, 15 and 16. Required when create_mode is Default."
 }

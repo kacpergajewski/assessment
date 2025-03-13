@@ -22,7 +22,7 @@ module "database" {
   name                    = var.database_server_name
   resource_group          = azurerm_resource_group.database
   location                = var.location
-  version                 = var.postgresql_version
+  postgresql_version      = var.postgresql_version
   administrator_login     = var.administrator_login
   administrator_password  = var.administrator_password
   zone                    = var.zone

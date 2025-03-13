@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.21.1"
+      version = "=4.22.0"
     }
   }
 }
@@ -45,7 +45,7 @@ resource "azurerm_postgresql_flexible_server" "default" {
   public_network_access_enabled = false
   sku_name                      = var.sku_name
   storage_mb                    = var.storage_mb
-  version                       = var.version
+  version                       = var.postgresql_version
   zone                          = var.zone
   create_mode                   = var.create_mode
   administrator_login           = var.administrator_login
