@@ -27,6 +27,7 @@ resource "azurerm_resource_group" "database" {
 }
 
 data "azurerm_subnet" "database" {
+  depends_on = [ module.network ]
   name                 = var.database_subnet_name
   resource_group_name  = azurerm_resource_group.network.name
   virtual_network_name = module.network.name
