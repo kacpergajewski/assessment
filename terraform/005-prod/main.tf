@@ -26,14 +26,21 @@ resource "azurerm_resource_group" "database" {
   location = var.location
 }
 
+data "azurerm_subnet" "database" {
+  depends_on = [module.network]
+
+  name                 = var.database_subnet_name
+  resource_group_name  = azurerm_resource_group.network.name
+  virtual_network_name = module.network.name
+}
+
 module "database" {
   source = "../modules/database"
 
-  subscription_id        = var.subscription_id
-  network_name           = module.network.name
-  network_resource_group = azurerm_resource_group.network.name
-  database_subnet_name   = var.database_subnet_name
-  private_dns_zone_name  = var.private_dns_zone_name
+  subscription_id       = var.subscription_id
+  network_id            = module.network.id
+  database_subnet_id    = data.azurerm_subnet.database.id
+  private_dns_zone_name = var.private_dns_zone_name
 
   name                   = var.database_server_name
   resource_group         = azurerm_resource_group.database.name

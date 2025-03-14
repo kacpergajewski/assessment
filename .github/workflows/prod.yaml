@@ -23,17 +23,35 @@ jobs:
         client-id: ${{ secrets.ARM_CLIENT_ID }}
         tenant-id: ${{ secrets.ARM_TENANT_ID }}
         subscription-id: ${{ vars.PROD_SUBSCRIPTION_ID }}
-    - name: Set up terraform
+    - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: 1.5.7
 
-    - name: Initialize terraform database
+    - name: Initialize terraform
       run: |
         cd $GITHUB_WORKSPACE/terraform/005-prod
         terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
-    - name: Provision database
+        
+    - name: terraform format
+      id: fmt
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/005-prod
+        terraform fmt -check
+
+    - name: terraform validate
+      id: validate
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/005-prod
+        terraform validate
+
+    - name: terraform plan
+      id: plan
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/005-prod
+        terraform plan -input=false -no-color -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
+
+    - name: terraform apply
       run: |
         cd $GITHUB_WORKSPACE/terraform/005-prod
         terraform apply --auto-approve -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
-  

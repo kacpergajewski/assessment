@@ -25,9 +25,8 @@ subnets = [
   }
 ]
 
-database_subnet_name  = "database-subnet"
-private_dns_zone_name = "prod.postgres.database.azure.com"
-
+database_subnet_name    = "database-subnet"
+private_dns_zone_name   = "prod.postgres.database.azure.com"
 database_server_name    = "prod-kacpergajewski"
 database_resource_group = "prod-database-rg"
 sku_name                = "B_Standard_B1ms"

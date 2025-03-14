@@ -33,17 +33,24 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/terraform/002-sandbox
         terraform init -backend-config="access_key=${{ secrets.STATE_ACCESS_KEY }}"
+        
     - name: terraform format
       id: fmt
-      run: terraform fmt -check
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/002-sandbox
+        terraform fmt -check
+
     - name: terraform validate
       id: validate
-      run: terraform validate
+      run: |
+        cd $GITHUB_WORKSPACE/terraform/002-sandbox
+        terraform validate
+
     - name: terraform plan
       id: plan
       run: |
         cd $GITHUB_WORKSPACE/terraform/002-sandbox
-        terraform plan -input=false -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
+        terraform plan -input=false -no-color -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
 
     - name: terraform apply
       run: |

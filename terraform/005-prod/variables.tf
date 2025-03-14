@@ -48,7 +48,7 @@ variable "subnets" {
 
 variable "database_subnet_name" {
   type        = string
-  description = "Specifies the name of the Subnet."
+  description = "name of the subnet to create the PostgreSQL Flexible Server."
 }
 
 variable "private_dns_zone_name" {
