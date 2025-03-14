@@ -30,9 +30,8 @@ module "database" {
   source = "../modules/database"
 
   subscription_id        = var.subscription_id
-  network_name           = module.network.name
-  network_resource_group = azurerm_resource_group.network.name
-  database_subnet_name   = var.database_subnet_name
+  network_id             = module.network.id
+  database_subnet_id     = module.network.database_subnet_id
   private_dns_zone_name  = var.private_dns_zone_name
 
   name                   = var.database_server_name

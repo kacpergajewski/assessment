@@ -43,7 +43,7 @@ jobs:
       id: plan
       run: |
         cd $GITHUB_WORKSPACE/terraform/002-sandbox
-        terraform plan -no-color -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
+        terraform plan -var="administrator_login=${{ secrets.DB_USER }}" -var="administrator_password=${{ secrets.DB_PASS }}"
 
     - name: terraform apply
       run: |
