@@ -25,7 +25,7 @@ subnets = [
   }
 ]
 
-database_subnet         = "database-subnet"
+database_subnet_name    = "database-subnet"
 private_dns_zone_name   = "sandbox.postgres.database.azure.com"
 database_server_name    = "sandbox-kacpergajewski"
 database_resource_group = "sandbox-database-rg"
