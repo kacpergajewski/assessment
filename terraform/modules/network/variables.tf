@@ -1,18 +1,18 @@
 variable "subscription_id" {
   type        = string
-  description = "ID of the subscription where the resource will be deployed"
+  description = "ID of the subscription where the resource will be deployed."
 }
 
 variable "location" {
   type        = string
   default     = "Poland Central"
-  description = "Location for the resources. Changing this forces a new resource to be created"
+  description = "Location for the resources. Changing this forces a new resource to be created."
 }
 
 variable "resource_tags" {
   type        = map(string)
   default     = {}
-  description = "Tags for the resource"
+  description = "Tags for the resource."
 }
 
 
@@ -33,12 +33,12 @@ variable "address_space" {
 
 variable "subnets" {
   type = list(object({
-    name = string
-    address_prefixes = list(string)
+    name              = string
+    address_prefixes  = list(string)
     service_endpoints = list(string)
-    delegation_name = string
+    delegation_name   = string
     delegation_action = string
   }))
-  default = []
+  default     = []
   description = "List of subnet name and address prefix"
 }

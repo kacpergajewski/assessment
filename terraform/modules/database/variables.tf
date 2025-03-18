@@ -1,34 +1,29 @@
 variable "subscription_id" {
   type        = string
-  description = "ID of the subscription where the resource will be deployed"
+  description = "ID of the subscription where the resource will be deployed."
 }
 
 variable "location" {
   type        = string
   default     = "Poland Central"
-  description = "Location for the resources. Changing this forces a new resource to be created"
+  description = "Location for the resources. Changing this forces a new resource to be created."
 }
 
 variable "resource_tags" {
   type        = map(string)
   default     = {}
-  description = "Tags for the resource"
+  description = "Tags for the resource."
 }
 
 
-variable "network_name" {
+variable "network_id" {
   type        = string
-  description = "Specifies the name of the Virtual Network."
+  description = "ID of network to give access to private DNS zone to."
 }
 
-variable "network_resource_group" {
+variable "database_subnet_id" {
   type        = string
-  description = "Specifies the name of the resource group the Virtual Network is located in."
-}
-
-variable "database_subnet_name" {
-  type        = string
-  description = "Specifies the name of the Subnet."
+  description = "ID of the subnet to create the PostgreSQL Flexible Server."
 }
 
 variable "private_dns_zone_name" {

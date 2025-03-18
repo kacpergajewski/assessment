@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.22.0"
+      version = "=4.23.0"
     }
   }
 }
@@ -18,7 +18,7 @@ resource "azurerm_network_security_group" "default" {
 }
 
 resource "azurerm_virtual_network" "default" {
-  depends_on = [ azurerm_network_security_group.default ]
+  depends_on = [azurerm_network_security_group.default]
 
   name                = var.name
   location            = var.location
@@ -36,17 +36,17 @@ resource "azurerm_virtual_network" "default" {
 }
 
 resource "azurerm_subnet" "default" {
-  depends_on = [ azurerm_virtual_network.default ]
+  depends_on = [azurerm_virtual_network.default]
   for_each = {
-    for subnet in var.subnets: subnet.name => subnet
+    for subnet in var.subnets : subnet.name => subnet
   }
 
-  name                  = each.value.name
-  resource_group_name   = var.resource_group
-  virtual_network_name  = azurerm_virtual_network.default.name
-  address_prefixes      = each.value.address_prefixes
-  dynamic delegation {
-    for_each = (length(each.value.delegation_name) > 0 && length(each.value.delegation_action) > 0) ? {""=""} : {}
+  name                 = each.value.name
+  resource_group_name  = var.resource_group
+  virtual_network_name = azurerm_virtual_network.default.name
+  address_prefixes     = each.value.address_prefixes
+  dynamic "delegation" {
+    for_each = (length(each.value.delegation_name) > 0 && length(each.value.delegation_action) > 0) ? { "" = "" } : {}
     content {
       name = "${each.value.name}-delegation"
       service_delegation {
